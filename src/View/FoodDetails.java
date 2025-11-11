@@ -1,0 +1,329 @@
+/*
+ * Food Details Window with Rating
+ */
+package View;
+
+import Controller.FoodDetailsController;
+import Model.Food;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+
+/**
+ *
+ * @author unifvipereira
+ */
+public class FoodDetails extends javax.swing.JFrame {
+
+    private FoodDetailsController controller;
+    private Food currentFood;
+    
+    /**
+     * Creates new form FoodDetails
+     */
+    public FoodDetails(Food food) {
+        initComponents();
+        this.currentFood = food;
+        controller = new FoodDetailsController(this);
+        controller.loadFoodDetails(food);
+    }
+
+    public JLabel getLblFoodName() {
+        return lblFoodName;
+    }
+
+    public JTextArea getTxtDescription() {
+        return txtDescription;
+    }
+
+    public JLabel getLblPrice() {
+        return lblPrice;
+    }
+
+    public JLabel getLblRating() {
+        return lblRating;
+    }
+
+    public JLabel getLblCategory() {
+        return lblCategory;
+    }
+
+    public javax.swing.JButton getBtnRate0() {
+        return btnRate0;
+    }
+
+    public javax.swing.JButton getBtnRate1() {
+        return btnRate1;
+    }
+
+    public javax.swing.JButton getBtnRate2() {
+        return btnRate2;
+    }
+
+    public javax.swing.JButton getBtnRate3() {
+        return btnRate3;
+    }
+
+    public javax.swing.JButton getBtnRate4() {
+        return btnRate4;
+    }
+
+    public javax.swing.JButton getBtnRate5() {
+        return btnRate5;
+    }
+
+    public Food getCurrentFood() {
+        return currentFood;
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        lblFoodName = new javax.swing.JLabel();
+        lblCategory = new javax.swing.JLabel();
+        txtDescription = new javax.swing.JTextArea();
+        lblPrice = new javax.swing.JLabel();
+        lblRating = new javax.swing.JLabel();
+        lblRatingTitle = new javax.swing.JLabel();
+        btnRate0 = new javax.swing.JButton();
+        btnRate1 = new javax.swing.JButton();
+        btnRate2 = new javax.swing.JButton();
+        btnRate3 = new javax.swing.JButton();
+        btnRate4 = new javax.swing.JButton();
+        btnRate5 = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        lblStarsTitle = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("iFood - Detalhes");
+        getContentPane().setBackground(new java.awt.Color(245, 245, 245));
+
+        lblFoodName.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        lblFoodName.setForeground(new java.awt.Color(255, 87, 34));
+        lblFoodName.setText("Nome do Alimento");
+
+        lblCategory.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCategory.setText("Categoria: ");
+
+        txtDescription.setEditable(false);
+        txtDescription.setColumns(20);
+        txtDescription.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtDescription.setLineWrap(true);
+        txtDescription.setRows(5);
+        txtDescription.setWrapStyleWord(true);
+
+        lblPrice.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lblPrice.setText("Preço: R$ 0,00");
+
+        lblRating.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblRating.setText("Avaliação: 0.0 ⭐ (0 avaliações)");
+
+        lblRatingTitle.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblRatingTitle.setText("Avaliar este alimento:");
+
+        btnRate0.setBackground(new java.awt.Color(255, 87, 34));
+        btnRate0.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRate0.setForeground(new java.awt.Color(255, 255, 255));
+        btnRate0.setText("0 ⭐");
+        btnRate0.setBorderPainted(false);
+        btnRate0.setFocusPainted(false);
+        btnRate0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRate0ActionPerformed(evt);
+            }
+        });
+
+        btnRate1.setBackground(new java.awt.Color(255, 87, 34));
+        btnRate1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRate1.setForeground(new java.awt.Color(255, 255, 255));
+        btnRate1.setText("1 ⭐");
+        btnRate1.setBorderPainted(false);
+        btnRate1.setFocusPainted(false);
+        btnRate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRate1ActionPerformed(evt);
+            }
+        });
+
+        btnRate2.setBackground(new java.awt.Color(255, 87, 34));
+        btnRate2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRate2.setForeground(new java.awt.Color(255, 255, 255));
+        btnRate2.setText("2 ⭐");
+        btnRate2.setBorderPainted(false);
+        btnRate2.setFocusPainted(false);
+        btnRate2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRate2ActionPerformed(evt);
+            }
+        });
+
+        btnRate3.setBackground(new java.awt.Color(255, 87, 34));
+        btnRate3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRate3.setForeground(new java.awt.Color(255, 255, 255));
+        btnRate3.setText("3 ⭐");
+        btnRate3.setBorderPainted(false);
+        btnRate3.setFocusPainted(false);
+        btnRate3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRate3ActionPerformed(evt);
+            }
+        });
+
+        btnRate4.setBackground(new java.awt.Color(255, 87, 34));
+        btnRate4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRate4.setForeground(new java.awt.Color(255, 255, 255));
+        btnRate4.setText("4 ⭐");
+        btnRate4.setBorderPainted(false);
+        btnRate4.setFocusPainted(false);
+        btnRate4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRate4ActionPerformed(evt);
+            }
+        });
+
+        btnRate5.setBackground(new java.awt.Color(255, 87, 34));
+        btnRate5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRate5.setForeground(new java.awt.Color(255, 255, 255));
+        btnRate5.setText("5 ⭐");
+        btnRate5.setBorderPainted(false);
+        btnRate5.setFocusPainted(false);
+        btnRate5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRate5ActionPerformed(evt);
+            }
+        });
+
+        btnClose.setBackground(new java.awt.Color(255, 87, 34));
+        btnClose.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnClose.setForeground(new java.awt.Color(255, 255, 255));
+        btnClose.setText("Fechar");
+        btnClose.setBorderPainted(false);
+        btnClose.setFocusPainted(false);
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        lblStarsTitle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblStarsTitle.setText("Clique em uma estrela para avaliar:");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFoodName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblCategory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDescription)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblPrice)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblRating, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblRatingTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblStarsTitle)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnRate0, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRate1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRate2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRate3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRate4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRate5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoodName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCategory)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPrice)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblRating)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblRatingTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblStarsTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRate0, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRate1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRate2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRate3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRate4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRate5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRate0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRate0ActionPerformed
+        controller.rateFood(0);
+    }//GEN-LAST:event_btnRate0ActionPerformed
+
+    private void btnRate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRate1ActionPerformed
+        controller.rateFood(1);
+    }//GEN-LAST:event_btnRate1ActionPerformed
+
+    private void btnRate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRate2ActionPerformed
+        controller.rateFood(2);
+    }//GEN-LAST:event_btnRate2ActionPerformed
+
+    private void btnRate3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRate3ActionPerformed
+        controller.rateFood(3);
+    }//GEN-LAST:event_btnRate3ActionPerformed
+
+    private void btnRate4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRate4ActionPerformed
+        controller.rateFood(4);
+    }//GEN-LAST:event_btnRate4ActionPerformed
+
+    private void btnRate5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRate5ActionPerformed
+        controller.rateFood(5);
+    }//GEN-LAST:event_btnRate5ActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnRate0;
+    private javax.swing.JButton btnRate1;
+    private javax.swing.JButton btnRate2;
+    private javax.swing.JButton btnRate3;
+    private javax.swing.JButton btnRate4;
+    private javax.swing.JButton btnRate5;
+    private javax.swing.JLabel lblCategory;
+    private javax.swing.JLabel lblFoodName;
+    private javax.swing.JLabel lblPrice;
+    private javax.swing.JLabel lblRating;
+    private javax.swing.JLabel lblRatingTitle;
+    private javax.swing.JLabel lblStarsTitle;
+    private javax.swing.JTextArea txtDescription;
+    // End of variables declaration//GEN-END:variables
+}
+
