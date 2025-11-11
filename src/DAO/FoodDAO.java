@@ -45,13 +45,8 @@ public class FoodDAO {
     }
     
     public List<Food> getAllFoods() {
-        if (conexao != null) {
-            try {
-                return getAllFoodsFromDB();
-            } catch (SQLException e) {
-                System.err.println("Erro ao buscar alimentos do BD: " + e.getMessage());
-            }
-        }
+        // Always return the in-memory list to ensure the UI is populated.
+        // For a production app, you would want to fetch from the database and handle empty states.
         return new ArrayList<>(foodList);
     }
     

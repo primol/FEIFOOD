@@ -72,12 +72,12 @@ public class FoodMenu extends javax.swing.JFrame {
         headerPanel.setLayout(new BorderLayout());
         headerPanel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
         
-        JLabel titleLabel = new JLabel("🍔 iFood");
+        JLabel titleLabel = new JLabel("iFood");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
         titleLabel.setForeground(Color.WHITE);
         headerPanel.add(titleLabel, BorderLayout.WEST);
         
-        JLabel cartLabel = new JLabel("🛒 0");
+        JLabel cartLabel = new JLabel("Cart: 0");
         cartLabel.setName("cartCount");
         cartLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         cartLabel.setForeground(Color.WHITE);
@@ -99,10 +99,10 @@ public class FoodMenu extends javax.swing.JFrame {
             BorderFactory.createEmptyBorder(8, 12, 8, 12)));
         searchField.setBackground(Color.WHITE);
         
-        JButton searchBtn = new JButton("🔍");
+        JButton searchBtn = new JButton("Search");
         searchBtn.setName("btnSearch");
         searchBtn.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-        searchBtn.setPreferredSize(new Dimension(50, 40));
+        searchBtn.setPreferredSize(new Dimension(100, 40));
         searchBtn.setBackground(redTheme);
         searchBtn.setForeground(Color.WHITE);
         searchBtn.setBorderPainted(false);
@@ -129,7 +129,7 @@ public class FoodMenu extends javax.swing.JFrame {
         actionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         actionPanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 15, 15));
         
-        JButton addBtn = new JButton("➕ Adicionar");
+        JButton addBtn = new JButton("Add to Cart");
         addBtn.setName("btnAddToCart");
         addBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         addBtn.setPreferredSize(new Dimension(270, 45));
@@ -139,7 +139,7 @@ public class FoodMenu extends javax.swing.JFrame {
         addBtn.setFocusPainted(false);
         addBtn.addActionListener(e -> controller.addToCart());
         
-        JButton detailsBtn = new JButton("ℹ️ Detalhes");
+        JButton detailsBtn = new JButton("Details");
         detailsBtn.setName("btnViewDetails");
         detailsBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         detailsBtn.setPreferredSize(new Dimension(270, 45));
@@ -149,7 +149,7 @@ public class FoodMenu extends javax.swing.JFrame {
         detailsBtn.setFocusPainted(false);
         detailsBtn.addActionListener(e -> controller.viewDetails());
         
-        JButton cartBtn = new JButton("🛒 Carrinho");
+        JButton cartBtn = new JButton("View Cart");
         cartBtn.setName("btnViewCart");
         cartBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         cartBtn.setPreferredSize(new Dimension(550, 45));
@@ -244,9 +244,9 @@ public class FoodMenu extends javax.swing.JFrame {
                     g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10);
                     g2d.setColor(Color.WHITE);
                     g2d.setFont(new Font("Segoe UI", Font.BOLD, 24));
-                    String emoji = getFoodEmoji(food.getCategory());
-                    int emojiWidth = g2d.getFontMetrics().stringWidth(emoji);
-                    g2d.drawString(emoji, (getWidth() - emojiWidth) / 2, getHeight() / 2 + 8);
+                    String placeholder = "No Image";
+                    int placeholderWidth = g2d.getFontMetrics().stringWidth(placeholder);
+                    g2d.drawString(placeholder, (getWidth() - placeholderWidth) / 2, getHeight() / 2 + 8);
                 } else {
                     Image img = icon.getImage();
                     Image scaled = img.getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
@@ -278,37 +278,17 @@ public class FoodMenu extends javax.swing.JFrame {
         priceLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         priceLabel.setForeground(redTheme);
         
-        JLabel ratingLabel = new JLabel("⭐ " + String.format("%.1f", food.getRating()) + 
-            " (" + food.getRatingCount() + ")");
-        ratingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        ratingLabel.setForeground(new Color(100, 100, 100));
-        
         infoPanel.add(nameLabel);
         infoPanel.add(Box.createVerticalStrut(5));
         infoPanel.add(descLabel);
         infoPanel.add(Box.createVerticalStrut(8));
         infoPanel.add(priceLabel);
         infoPanel.add(Box.createVerticalStrut(3));
-        infoPanel.add(ratingLabel);
         
         card.add(imagePanel, BorderLayout.WEST);
         card.add(infoPanel, BorderLayout.CENTER);
         
         return card;
-    }
-    
-    private String getFoodEmoji(String category) {
-        if (category == null) return "🍽️";
-        switch (category.toLowerCase()) {
-            case "pizza": return "🍕";
-            case "hambúrguer": return "🍔";
-            case "japonês": return "🍣";
-            case "salada": return "🥗";
-            case "italiano": return "🍝";
-            case "mexicano": return "🌮";
-            case "brasileiro": return "🍖";
-            default: return "🍽️";
-        }
     }
     
     private void selectCard(JPanel card) {
@@ -366,7 +346,7 @@ public class FoodMenu extends javax.swing.JFrame {
     public void updateCartCount(int count) {
         JLabel cartLabel = (JLabel) findComponentByName("cartCount");
         if (cartLabel != null) {
-            cartLabel.setText("🛒 " + count);
+            cartLabel.setText("Cart: " + count);
         }
     }
     
