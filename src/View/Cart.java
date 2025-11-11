@@ -71,7 +71,6 @@ public class Cart extends javax.swing.JFrame {
     /**
      * This method is called from within the constructor to initialize the form.
      */
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -88,7 +87,7 @@ public class Cart extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("iFood - Carrinho");
-        getContentPane().setBackground(new java.awt.Color(245, 245, 245));
+        getContentPane().setBackground(new java.awt.Color(255, 240, 240));
 
         cartList.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cartList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -97,7 +96,7 @@ public class Cart extends javax.swing.JFrame {
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(255, 87, 34));
+        lblTitle.setForeground(new java.awt.Color(220, 20, 60));
         lblTitle.setText("🛒 iFood - Carrinho");
 
         lblQuantity.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -106,7 +105,7 @@ public class Cart extends javax.swing.JFrame {
         spnQuantity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         spnQuantity.setModel(new javax.swing.SpinnerNumberModel(1, 1, 99, 1));
 
-        btnEdit.setBackground(new java.awt.Color(255, 87, 34));
+        btnEdit.setBackground(new java.awt.Color(220, 20, 60));
         btnEdit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setText("✏️ Editar");
@@ -118,7 +117,7 @@ public class Cart extends javax.swing.JFrame {
             }
         });
 
-        btnRemove.setBackground(new java.awt.Color(220, 53, 69));
+        btnRemove.setBackground(new java.awt.Color(180, 0, 40));
         btnRemove.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRemove.setForeground(new java.awt.Color(255, 255, 255));
         btnRemove.setText("🗑️ Remover");
@@ -130,7 +129,7 @@ public class Cart extends javax.swing.JFrame {
             }
         });
 
-        btnBack.setBackground(new java.awt.Color(255, 87, 34));
+        btnBack.setBackground(new java.awt.Color(220, 20, 60));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("← Voltar");
@@ -143,15 +142,15 @@ public class Cart extends javax.swing.JFrame {
         });
 
         lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTotal.setForeground(new java.awt.Color(255, 87, 34));
+        lblTotal.setForeground(new java.awt.Color(220, 20, 60));
         lblTotal.setText("Total:");
 
         txtTotal.setEditable(false);
         txtTotal.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        txtTotal.setForeground(new java.awt.Color(255, 87, 34));
+        txtTotal.setForeground(new java.awt.Color(220, 20, 60));
         txtTotal.setBackground(new java.awt.Color(255, 255, 255));
         txtTotal.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 87, 34), 2),
+            javax.swing.BorderFactory.createLineBorder(new java.awt.Color(220, 20, 60), 2),
             javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10)));
         txtTotal.setText("R$ 0,00");
 

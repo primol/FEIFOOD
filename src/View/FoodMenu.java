@@ -56,18 +56,19 @@ public class FoodMenu extends javax.swing.JFrame {
      * This method is called from within the constructor to initialize the form.
      */
     private void initComponents() {
-        // Mobile proportions: 375x812 (iPhone-like)
+        // Larger user-friendly size
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iFood - Menu");
-        setResizable(false);
-        setSize(400, 800);
+        setResizable(true);
+        setSize(900, 1000);
+        setMinimumSize(new Dimension(800, 700));
         getContentPane().setBackground(lightRed);
         getContentPane().setLayout(new BorderLayout());
         
         // Header Panel
         JPanel headerPanel = new JPanel();
         headerPanel.setBackground(redTheme);
-        headerPanel.setPreferredSize(new Dimension(400, 80));
+        headerPanel.setPreferredSize(new Dimension(900, 80));
         headerPanel.setLayout(new BorderLayout());
         headerPanel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
         
@@ -89,10 +90,10 @@ public class FoodMenu extends javax.swing.JFrame {
         searchPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 15));
         searchPanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
         
-        JTextField searchField = new JTextField(20);
+        JTextField searchField = new JTextField(30);
         searchField.setName("txtSearch");
         searchField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        searchField.setPreferredSize(new Dimension(280, 40));
+        searchField.setPreferredSize(new Dimension(600, 40));
         searchField.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(redTheme, 2),
             BorderFactory.createEmptyBorder(8, 12, 8, 12)));
@@ -131,7 +132,7 @@ public class FoodMenu extends javax.swing.JFrame {
         JButton addBtn = new JButton("➕ Adicionar");
         addBtn.setName("btnAddToCart");
         addBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        addBtn.setPreferredSize(new Dimension(170, 45));
+        addBtn.setPreferredSize(new Dimension(270, 45));
         addBtn.setBackground(redTheme);
         addBtn.setForeground(Color.WHITE);
         addBtn.setBorderPainted(false);
@@ -141,7 +142,7 @@ public class FoodMenu extends javax.swing.JFrame {
         JButton detailsBtn = new JButton("ℹ️ Detalhes");
         detailsBtn.setName("btnViewDetails");
         detailsBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        detailsBtn.setPreferredSize(new Dimension(170, 45));
+        detailsBtn.setPreferredSize(new Dimension(270, 45));
         detailsBtn.setBackground(darkRed);
         detailsBtn.setForeground(Color.WHITE);
         detailsBtn.setBorderPainted(false);
@@ -151,7 +152,7 @@ public class FoodMenu extends javax.swing.JFrame {
         JButton cartBtn = new JButton("🛒 Carrinho");
         cartBtn.setName("btnViewCart");
         cartBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        cartBtn.setPreferredSize(new Dimension(340, 45));
+        cartBtn.setPreferredSize(new Dimension(550, 45));
         cartBtn.setBackground(redTheme);
         cartBtn.setForeground(Color.WHITE);
         cartBtn.setBorderPainted(false);
@@ -197,8 +198,8 @@ public class FoodMenu extends javax.swing.JFrame {
         card.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(redTheme, 2),
             BorderFactory.createEmptyBorder(12, 12, 12, 12)));
-        card.setPreferredSize(new Dimension(350, 140));
-        card.setMaximumSize(new Dimension(350, 140));
+        card.setPreferredSize(new Dimension(850, 160));
+        card.setMaximumSize(new Dimension(850, 160));
         
         // Add click listener
         card.addMouseListener(new MouseAdapter() {
@@ -253,7 +254,7 @@ public class FoodMenu extends javax.swing.JFrame {
                 }
             }
         };
-        imagePanel.setPreferredSize(new Dimension(110, 110));
+        imagePanel.setPreferredSize(new Dimension(130, 130));
         imagePanel.setBackground(redTheme);
         
         // Info Panel
@@ -263,12 +264,12 @@ public class FoodMenu extends javax.swing.JFrame {
         infoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         
         JLabel nameLabel = new JLabel(food.getName());
-        nameLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        nameLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         nameLabel.setForeground(redTheme);
         
-        JLabel descLabel = new JLabel("<html><body style='width: 200px'>" + 
-            (food.getDescription().length() > 60 ? 
-                food.getDescription().substring(0, 60) + "..." : 
+        JLabel descLabel = new JLabel("<html><body style='width: 600px'>" + 
+            (food.getDescription().length() > 100 ? 
+                food.getDescription().substring(0, 100) + "..." : 
                 food.getDescription()) + "</body></html>");
         descLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         descLabel.setForeground(new Color(80, 80, 80));
@@ -361,7 +362,7 @@ public class FoodMenu extends javax.swing.JFrame {
         }
         return null;
     }
-    
+
     public void updateCartCount(int count) {
         JLabel cartLabel = (JLabel) findComponentByName("cartCount");
         if (cartLabel != null) {
