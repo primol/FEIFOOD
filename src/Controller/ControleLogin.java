@@ -12,7 +12,7 @@ import View.Login;
 import Model.Aluno;
 import DAO.AlunoDAO;
 import DAO.Conexao;
-import View.Logado;
+import View.FoodMenu;
 /**
  *
  * @author unifvipereira
@@ -40,8 +40,8 @@ public class ControleLogin {
                         "Aviso",
                         JOptionPane.INFORMATION_MESSAGE);
                 tela1.dispose(); // Close login window
-                Logado tela2 = new Logado();
-                tela2.setVisible(true);
+                FoodMenu foodMenu = new FoodMenu();
+                foodMenu.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(tela1, 
                         "Login nao efetuado",

@@ -34,14 +34,14 @@ public class FoodDAO {
     
     static {
         // Sample foods
-        foodList.add(new Food(nextId++, "Pizza Margherita", "Pizza clássica com molho de tomate, mussarela e manjericão", 35.90, 4.5, 20, "Pizza"));
-        foodList.add(new Food(nextId++, "Hambúrguer Artesanal", "Hambúrguer com carne artesanal, queijo, alface e tomate", 28.50, 4.8, 15, "Hambúrguer"));
-        foodList.add(new Food(nextId++, "Sushi Combo", "Combo com 12 peças de sushi variado", 45.00, 4.7, 30, "Japonês"));
-        foodList.add(new Food(nextId++, "Salada Caesar", "Salada fresca com frango grelhado e molho caesar", 22.90, 4.3, 12, "Salada"));
-        foodList.add(new Food(nextId++, "Lasanha à Bolonhesa", "Lasanha tradicional com molho bolonhesa e queijo", 32.00, 4.6, 25, "Italiano"));
-        foodList.add(new Food(nextId++, "Taco Mexicano", "Tacos com carne, queijo, alface e molho especial", 18.90, 4.4, 18, "Mexicano"));
-        foodList.add(new Food(nextId++, "Frango Grelhado", "Peito de frango grelhado com arroz e batata", 26.50, 4.5, 22, "Brasileiro"));
-        foodList.add(new Food(nextId++, "Ramen Tradicional", "Ramen com caldo de porco, ovos e noodles", 38.00, 4.9, 28, "Japonês"));
+        foodList.add(new Food(nextId++, "Pizza Margherita", "Pizza clássica com molho de tomate, mussarela e manjericão", 35.90, 4.5, 20, "Pizza", null));
+        foodList.add(new Food(nextId++, "Hambúrguer Artesanal", "Hambúrguer com carne artesanal, queijo, alface e tomate", 28.50, 4.8, 15, "Hambúrguer", null));
+        foodList.add(new Food(nextId++, "Sushi Combo", "Combo com 12 peças de sushi variado", 45.00, 4.7, 30, "Japonês", null));
+        foodList.add(new Food(nextId++, "Salada Caesar", "Salada fresca com frango grelhado e molho caesar", 22.90, 4.3, 12, "Salada", null));
+        foodList.add(new Food(nextId++, "Lasanha à Bolonhesa", "Lasanha tradicional com molho bolonhesa e queijo", 32.00, 4.6, 25, "Italiano", null));
+        foodList.add(new Food(nextId++, "Taco Mexicano", "Tacos com carne, queijo, alface e molho especial", 18.90, 4.4, 18, "Mexicano", null));
+        foodList.add(new Food(nextId++, "Frango Grelhado", "Peito de frango grelhado com arroz e batata", 26.50, 4.5, 22, "Brasileiro", null));
+        foodList.add(new Food(nextId++, "Ramen Tradicional", "Ramen com caldo de porco, ovos e noodles", 38.00, 4.9, 28, "Japonês", null));
     }
     
     public List<Food> getAllFoods() {

@@ -8,7 +8,7 @@ import View.FoodMenu;
 
 /**
  *
- * @author unifvipereira
+ * @author unifvipereiraaaaaaaaaaaa
  */
 public class Aula09Ex01 {
 
@@ -16,9 +16,9 @@ public class Aula09Ex01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-            // Skip login - open FoodMenu directly
-            FoodMenu foodMenu = new FoodMenu();
-            foodMenu.setVisible(true);
+            // Open Login screen
+            Login login = new Login();
+            login.setVisible(true);
     }
     
 }
