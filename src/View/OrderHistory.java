@@ -10,7 +10,7 @@ public class OrderHistory extends javax.swing.JFrame {
 
     public OrderHistory() {
         initComponents();
-        tableModel = new DefaultTableModel(new Object[]{"Order ID", "Date", "Total"}, 0);
+        tableModel = new DefaultTableModel(new Object[]{"ID do Pedido", "Data", "Total"}, 0);
         orderTable.setModel(tableModel);
     }
 
@@ -36,22 +36,22 @@ public class OrderHistory extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("My Orders");
+        setTitle("Meus Pedidos");
 
         orderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Order ID", "Date", "Total"
+                "ID do Pedido", "Data", "Total"
             }
         ));
         jScrollPane1.setViewportView(orderTable);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("My Orders");
+        jLabel1.setText("Meus Pedidos");
 
-        btnClose.setText("Close");
+        btnClose.setText("Fechar");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);

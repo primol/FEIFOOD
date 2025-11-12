@@ -61,7 +61,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("iFood - Login");
         setResizable(false);
-        getContentPane().setBackground(new Color(240, 240, 240)); // Light gray background
+        getContentPane().setBackground(new Color(255, 240, 240)); // lightRed
 
         // Title Label
         lblTitle.setFont(new Font("Segoe UI", Font.BOLD, 48));

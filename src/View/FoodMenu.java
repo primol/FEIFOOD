@@ -16,7 +16,7 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
+import java.net.URL;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -28,6 +28,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -58,7 +60,7 @@ public class FoodMenu extends javax.swing.JFrame {
     private void initComponents() {
         // Larger user-friendly size
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("iFood - Menu");
+        setTitle("iFood - Cardápio");
         setResizable(true);
         setSize(900, 1000);
         setMinimumSize(new Dimension(800, 700));
@@ -77,7 +79,7 @@ public class FoodMenu extends javax.swing.JFrame {
         titleLabel.setForeground(Color.WHITE);
         headerPanel.add(titleLabel, BorderLayout.WEST);
         
-        JLabel cartLabel = new JLabel("Cart: 0");
+        JLabel cartLabel = new JLabel("Carrinho: 0");
         cartLabel.setName("cartCount");
         cartLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         cartLabel.setForeground(Color.WHITE);
@@ -98,8 +100,14 @@ public class FoodMenu extends javax.swing.JFrame {
             BorderFactory.createLineBorder(redTheme, 2),
             BorderFactory.createEmptyBorder(8, 12, 8, 12)));
         searchField.setBackground(Color.WHITE);
+        searchField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) { controller.searchFoods(); }
+            public void removeUpdate(DocumentEvent e) { controller.searchFoods(); }
+            public void insertUpdate(DocumentEvent e) { controller.searchFoods(); }
+        });
+
         
-        JButton searchBtn = new JButton("Search");
+        JButton searchBtn = new JButton("Buscar");
         searchBtn.setName("btnSearch");
         searchBtn.setFont(new Font("Segoe UI", Font.PLAIN, 18));
         searchBtn.setPreferredSize(new Dimension(100, 40));
@@ -129,7 +137,7 @@ public class FoodMenu extends javax.swing.JFrame {
         actionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         actionPanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 15, 15));
         
-        JButton addBtn = new JButton("Add to Cart");
+        JButton addBtn = new JButton("Adicionar ao Carrinho");
         addBtn.setName("btnAddToCart");
         addBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         addBtn.setPreferredSize(new Dimension(270, 45));
@@ -139,7 +147,7 @@ public class FoodMenu extends javax.swing.JFrame {
         addBtn.setFocusPainted(false);
         addBtn.addActionListener(e -> controller.addToCart());
         
-        JButton detailsBtn = new JButton("Details");
+        JButton detailsBtn = new JButton("Detalhes");
         detailsBtn.setName("btnViewDetails");
         detailsBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         detailsBtn.setPreferredSize(new Dimension(270, 45));
@@ -149,7 +157,7 @@ public class FoodMenu extends javax.swing.JFrame {
         detailsBtn.setFocusPainted(false);
         detailsBtn.addActionListener(e -> controller.viewDetails());
         
-        JButton cartBtn = new JButton("View Cart");
+        JButton cartBtn = new JButton("Ver Carrinho");
         cartBtn.setName("btnViewCart");
         cartBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         cartBtn.setPreferredSize(new Dimension(270, 45));
@@ -159,7 +167,7 @@ public class FoodMenu extends javax.swing.JFrame {
         cartBtn.setFocusPainted(false);
         cartBtn.addActionListener(e -> controller.viewCart());
         
-        JButton ordersBtn = new JButton("See My Orders");
+        JButton ordersBtn = new JButton("Meus Pedidos");
         ordersBtn.setName("btnSeeMyOrders");
         ordersBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         ordersBtn.setPreferredSize(new Dimension(270, 45));
@@ -243,10 +251,9 @@ public class FoodMenu extends javax.swing.JFrame {
                 
                 ImageIcon icon = null;
                 if (food.getImagePath() != null && !food.getImagePath().isEmpty()) {
-                    File imgFile = new File(food.getImagePath());
-                    if (imgFile.exists()) {
-                        icon = new ImageIcon(food.getImagePath());
-                    }
+                    // Load image as a resource from the classpath
+                    URL imgUrl = getClass().getResource("/" + food.getImagePath());
+                    if (imgUrl != null) icon = new ImageIcon(imgUrl);
                 }
                 
                 if (icon == null) {
@@ -255,7 +262,7 @@ public class FoodMenu extends javax.swing.JFrame {
                     g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10);
                     g2d.setColor(Color.WHITE);
                     g2d.setFont(new Font("Segoe UI", Font.BOLD, 24));
-                    String placeholder = "No Image";
+                    String placeholder = "Sem Imagem";
                     int placeholderWidth = g2d.getFontMetrics().stringWidth(placeholder);
                     g2d.drawString(placeholder, (getWidth() - placeholderWidth) / 2, getHeight() / 2 + 8);
                 } else {
@@ -361,7 +368,7 @@ public class FoodMenu extends javax.swing.JFrame {
     public void updateCartCount(int count) {
         JLabel cartLabel = (JLabel) findComponentByName("cartCount");
         if (cartLabel != null) {
-            cartLabel.setText("Cart: " + count);
+            cartLabel.setText("Carrinho: " + count);
         }
     }
     

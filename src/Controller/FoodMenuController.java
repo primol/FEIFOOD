@@ -29,7 +29,11 @@ public class FoodMenuController {
     }
     
     public void loadFoods() {
-        List<Food> foods = foodDAO.getAllFoods();
+        List<Food> foods = foodDAO.searchFoods(""); // Search with empty term to get all from DB
+        if (foods.isEmpty()) {
+            // Fallback to in-memory list if DB is empty or connection failed
+            foods = foodDAO.getAllFoods();
+        }
         view.displayFoods(foods);
         updateCartCount();
     }
@@ -45,10 +49,6 @@ public class FoodMenuController {
         }
         
         view.displayFoods(results);
-        
-        if (results.isEmpty() && !searchTerm.isEmpty()) {
-            JOptionPane.showMessageDialog(view, "Nenhum alimento encontrado!", "Busca", JOptionPane.INFORMATION_MESSAGE);
-        }
     }
     
     public void addToCart() {
@@ -116,4 +116,3 @@ public class FoodMenuController {
         view.updateCartCount(count);
     }
 }
-

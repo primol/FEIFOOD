@@ -64,12 +64,12 @@ public class Cadastro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("iFood - Cadastro");
         setResizable(false);
-        getContentPane().setBackground(new java.awt.Color(255, 87, 34));
+        getContentPane().setBackground(new java.awt.Color(220, 20, 60));
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("🍔 iFood");
+        lblTitle.setText("iFood Cadastro");
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblNome.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,7 +94,7 @@ public class Cadastro extends javax.swing.JFrame {
 
         btnCadastrar.setBackground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(255, 87, 34));
+        btnCadastrar.setForeground(new java.awt.Color(220, 20, 60));
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.setBorderPainted(false);
         btnCadastrar.setFocusPainted(false);
@@ -106,7 +106,7 @@ public class Cadastro extends javax.swing.JFrame {
 
         btnVoltar.setBackground(new java.awt.Color(255, 255, 255));
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnVoltar.setForeground(new java.awt.Color(255, 87, 34));
+        btnVoltar.setForeground(new java.awt.Color(220, 20, 60));
         btnVoltar.setText("Voltar");
         btnVoltar.setBorderPainted(false);
         btnVoltar.setFocusPainted(false);
