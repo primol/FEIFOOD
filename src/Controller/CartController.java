@@ -3,8 +3,15 @@
  */
 package Controller;
 
+import DAO.OrderDAO;
+import Model.Aluno;
 import Model.CartItem;
+import Model.Order;
+import Model.OrderItem;
 import View.Cart;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -16,10 +23,12 @@ import javax.swing.JOptionPane;
 public class CartController {
     private Cart view;
     private CartManager cartManager;
+    private OrderDAO orderDAO;
     
     public CartController(Cart view) {
         this.view = view;
         this.cartManager = CartManager.getInstance();
+        this.orderDAO = new OrderDAO();
     }
     
     public void loadCart() {
@@ -66,6 +75,38 @@ public class CartController {
             cartManager.removeFromCart(selected.getFood().getId());
             loadCart();
             JOptionPane.showMessageDialog(view, "Item removido do carrinho!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void finalizePurchase() {
+        Aluno aluno = UserSession.getInstance().getLoggedInAluno();
+        if (aluno == null) {
+            JOptionPane.showMessageDialog(view, "Você precisa estar logado para finalizar a compra!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        List<CartItem> cartItems = cartManager.getCartItems();
+        if (cartItems.isEmpty()) {
+            JOptionPane.showMessageDialog(view, "Seu carrinho está vazio!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        List<OrderItem> orderItems = new ArrayList<>();
+        for (CartItem cartItem : cartItems) {
+            orderItems.add(new OrderItem(cartItem.getFood().getId(), cartItem.getQuantity(), cartItem.getFood().getPrice()));
+        }
+
+        Order order = new Order(aluno.getId(), new Timestamp(System.currentTimeMillis()), cartManager.getTotal(), orderItems);
+
+        try {
+            orderDAO.saveOrder(order);
+            cartManager.clearCart();
+            loadCart();
+            JOptionPane.showMessageDialog(view, "Compra finalizada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            view.dispose();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(view, "Erro ao finalizar a compra!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
     

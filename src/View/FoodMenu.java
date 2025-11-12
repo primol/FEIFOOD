@@ -152,16 +152,27 @@ public class FoodMenu extends javax.swing.JFrame {
         JButton cartBtn = new JButton("View Cart");
         cartBtn.setName("btnViewCart");
         cartBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        cartBtn.setPreferredSize(new Dimension(550, 45));
+        cartBtn.setPreferredSize(new Dimension(270, 45));
         cartBtn.setBackground(redTheme);
         cartBtn.setForeground(Color.WHITE);
         cartBtn.setBorderPainted(false);
         cartBtn.setFocusPainted(false);
         cartBtn.addActionListener(e -> controller.viewCart());
         
+        JButton ordersBtn = new JButton("See My Orders");
+        ordersBtn.setName("btnSeeMyOrders");
+        ordersBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        ordersBtn.setPreferredSize(new Dimension(270, 45));
+        ordersBtn.setBackground(darkRed);
+        ordersBtn.setForeground(Color.WHITE);
+        ordersBtn.setBorderPainted(false);
+        ordersBtn.setFocusPainted(false);
+        ordersBtn.addActionListener(e -> controller.seeMyOrders());
+
         actionPanel.add(addBtn);
         actionPanel.add(detailsBtn);
         actionPanel.add(cartBtn);
+        actionPanel.add(ordersBtn);
         
         // Main content panel (search + scroll)
         JPanel contentPanel = new JPanel(new BorderLayout());
@@ -320,6 +331,10 @@ public class FoodMenu extends javax.swing.JFrame {
     
     public JButton getBtnViewCart() {
         return (JButton) findComponentByName("btnViewCart");
+    }
+
+    public JButton getBtnSeeMyOrders() {
+        return (JButton) findComponentByName("btnSeeMyOrders");
     }
     
     public JButton getBtnSearch() {

@@ -4,10 +4,12 @@
 package Controller;
 
 import DAO.FoodDAO;
+import Model.Aluno;
 import Model.Food;
 import View.Cart;
 import View.FoodDetails;
 import View.FoodMenu;
+import View.OrderHistory;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -96,6 +98,17 @@ public class FoodMenuController {
             }
         });
         cartWindow.setVisible(true);
+    }
+
+    public void seeMyOrders() {
+        Aluno aluno = UserSession.getInstance().getLoggedInAluno();
+        if (aluno == null) {
+            JOptionPane.showMessageDialog(view, "Você precisa estar logado para ver seus pedidos!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        OrderHistory orderHistory = new OrderHistory();
+        new OrderHistoryController(orderHistory, aluno.getId());
+        orderHistory.setVisible(true);
     }
     
     public void updateCartCount() {

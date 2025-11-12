@@ -13,6 +13,7 @@ import Model.Aluno;
 import DAO.AlunoDAO;
 import DAO.Conexao;
 import View.FoodMenu;
+import Controller.UserSession;
 /**
  *
  * @author unifvipereira
@@ -35,6 +36,12 @@ public class ControleLogin {
             AlunoDAO dao = new AlunoDAO(conn);
             ResultSet res = dao.consultar(aluno);
             if(res.next()){
+                int id = res.getInt("id");
+                String nome = res.getString("nome");
+                
+                Aluno loggedInAluno = new Aluno(id, nome, aluno.getUsuario(), aluno.getSenha());
+                UserSession.getInstance().setLoggedInAluno(loggedInAluno);
+
                 JOptionPane.showMessageDialog(tela1, 
                         "Login efetuado com sucesso",
                         "Aviso",
