@@ -29,31 +29,31 @@ public class FoodMenuController {
     }
     
     public void loadFoods() {
-        List<Food> foods = foodDAO.getAllFoods();
-        view.displayFoods(foods);
+        List<Food> alimentos = foodDAO.getAllFoods();
+        view.displayFoods(alimentos);
         updateCartCount();
     }
     
     public void searchFoods() {
-        String searchTerm = view.getTxtSearch().getText().trim();
-        List<Food> results;
+        String termoBusca = view.getTxtSearch().getText().trim();
+        List<Food> resultados;
         
-        if (searchTerm.isEmpty()) {
-            results = foodDAO.getAllFoods();
+        if (termoBusca.isEmpty()) {
+            resultados = foodDAO.getAllFoods();
         } else {
-            results = foodDAO.searchFoods(searchTerm);
+            resultados = foodDAO.searchFoods(termoBusca);
         }
         
-        view.displayFoods(results);
+        view.displayFoods(resultados);
         
-        if (results.isEmpty() && !searchTerm.isEmpty()) {
+        if (resultados.isEmpty() && !termoBusca.isEmpty()) {
             JOptionPane.showMessageDialog(view, "Nenhum alimento encontrado!", "Busca", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
     public void addToCart() {
-        Food selected = view.getSelectedFood();
-        if (selected == null) {
+        Food selecionado = view.getSelectedFood();
+        if (selecionado == null) {
             JOptionPane.showMessageDialog(view, "Por favor, selecione um alimento primeiro!", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -79,41 +79,41 @@ public class FoodMenuController {
     }
     
     public void viewDetails() {
-        Food selected = view.getSelectedFood();
-        if (selected == null) {
+        Food selecionado = view.getSelectedFood();
+        if (selecionado == null) {
             JOptionPane.showMessageDialog(view, "Por favor, selecione um alimento primeiro!", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        FoodDetails detailsWindow = new FoodDetails(selected);
-        detailsWindow.setVisible(true);
+        FoodDetails janelaDetalhes = new FoodDetails(selecionado);
+        janelaDetalhes.setVisible(true);
     }
     
     public void viewCart() {
-        Cart cartWindow = new Cart();
-        cartWindow.addWindowListener(new java.awt.event.WindowAdapter() {
+        Cart janelaCarrinho = new Cart();
+        janelaCarrinho.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosed(java.awt.event.WindowEvent windowEvent) {
                 updateCartCount();
             }
         });
-        cartWindow.setVisible(true);
+        janelaCarrinho.setVisible(true);
     }
 
     public void seeMyOrders() {
-        Aluno aluno = UserSession.getInstance().getLoggedInAluno();
-        if (aluno == null) {
+        Aluno alunoLogado = UserSession.getInstance().getLoggedInAluno();
+        if (alunoLogado == null) {
             JOptionPane.showMessageDialog(view, "Você precisa estar logado para ver seus pedidos!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        OrderHistory orderHistory = new OrderHistory();
-        new OrderHistoryController(orderHistory, aluno.getId());
-        orderHistory.setVisible(true);
+        OrderHistory historicoPedidos = new OrderHistory();
+        new OrderHistoryController(historicoPedidos, alunoLogado.getId());
+        historicoPedidos.setVisible(true);
     }
     
     public void updateCartCount() {
-        int count = cartManager.getItemCount();
-        view.updateCartCount(count);
+        int contagem = cartManager.getItemCount();
+        view.updateCartCount(contagem);
     }
 }
 

@@ -230,19 +230,10 @@ public class Cart extends javax.swing.JFrame {
         controller.backToMenu();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnFinalizeActionPerformed(java.awt.event.ActionEvent evt) {
-        controller.finalizePurchase();
-    }
-
-    public javax.swing.JButton getBtnFinalize() {
-        return btnFinalize;
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnRemove;
-    private javax.swing.JButton btnFinalize;
     private javax.swing.JList<CartItem> cartList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblQuantity;
