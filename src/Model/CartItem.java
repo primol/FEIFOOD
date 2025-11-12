@@ -1,47 +1,46 @@
 /*
- * CartItem Model for Food Delivery App
+ * CartItem Model para o aplicativo de entregas
  */
 package Model;
 
 /**
  *
- * @author unifvipereira
+ * Representa um item presente no carrinho de compras.
  */
 public class CartItem {
-    private Food food;
-    private int quantity;
+    private Food alimento;
+    private int quantidade;
     
     public CartItem() {
     }
     
-    public CartItem(Food food, int quantity) {
-        this.food = food;
-        this.quantity = quantity;
+    public CartItem(Food alimento, int quantidade) {
+        this.alimento = alimento;
+        this.quantidade = quantidade;
     }
 
     public Food getFood() {
-        return food;
+        return alimento;
     }
 
-    public void setFood(Food food) {
-        this.food = food;
+    public void setFood(Food alimento) {
+        this.alimento = alimento;
     }
 
     public int getQuantity() {
-        return quantity;
+        return quantidade;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantity(int quantidade) {
+        this.quantidade = quantidade;
     }
     
     public double getTotalPrice() {
-        return food.getPrice() * quantity;
+        return alimento.getPrice() * quantidade;
     }
     
     @Override
     public String toString() {
-        return food.getName() + " x" + quantity + " - R$ " + String.format("%.2f", getTotalPrice());
+        return alimento.getName() + " x" + quantidade + " - R$ " + String.format("%.2f", getTotalPrice());
     }
 }
-

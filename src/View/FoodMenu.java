@@ -35,21 +35,21 @@ import javax.swing.SwingConstants;
  */
 public class FoodMenu extends javax.swing.JFrame {
 
-    private FoodMenuController controller;
-    private JPanel foodCardsPanel;
-    private JScrollPane scrollPane;
-    private Food selectedFood;
-    private Color redTheme = new Color(220, 20, 60); // Crimson red
-    private Color lightRed = new Color(255, 240, 240);
-    private Color darkRed = new Color(180, 0, 40);
+    private FoodMenuController controladorMenu;
+    private JPanel painelCartoesAlimentos;
+    private JScrollPane painelRolagem;
+    private Food alimentoSelecionado;
+    private Color temaVermelho = new Color(220, 20, 60); // Crimson red
+    private Color vermelhoClaro = new Color(255, 240, 240);
+    private Color vermelhoEscuro = new Color(180, 0, 40);
     
     /**
      * Creates new form FoodMenu
      */
     public FoodMenu() {
         initComponents();
-        controller = new FoodMenuController(this);
-        controller.loadFoods();
+        controladorMenu = new FoodMenuController(this);
+        controladorMenu.carregarAlimentos();
     }
 
     /**
@@ -58,16 +58,16 @@ public class FoodMenu extends javax.swing.JFrame {
     private void initComponents() {
         // Larger user-friendly size
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("iFood - Menu");
+        setTitle("iFood - CardÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡pio");
         setResizable(true);
         setSize(900, 1000);
         setMinimumSize(new Dimension(800, 700));
-        getContentPane().setBackground(lightRed);
+        getContentPane().setBackground(vermelhoClaro);
         getContentPane().setLayout(new BorderLayout());
         
         // Header Panel
         JPanel headerPanel = new JPanel();
-        headerPanel.setBackground(redTheme);
+        headerPanel.setBackground(temaVermelho);
         headerPanel.setPreferredSize(new Dimension(900, 80));
         headerPanel.setLayout(new BorderLayout());
         headerPanel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
@@ -77,7 +77,7 @@ public class FoodMenu extends javax.swing.JFrame {
         titleLabel.setForeground(Color.WHITE);
         headerPanel.add(titleLabel, BorderLayout.WEST);
         
-        JLabel cartLabel = new JLabel("Cart: 0");
+        JLabel cartLabel = new JLabel("Carrinho: 0");
         cartLabel.setName("cartCount");
         cartLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         cartLabel.setForeground(Color.WHITE);
@@ -86,7 +86,7 @@ public class FoodMenu extends javax.swing.JFrame {
         
         // Search Panel
         JPanel searchPanel = new JPanel();
-        searchPanel.setBackground(lightRed);
+        searchPanel.setBackground(vermelhoClaro);
         searchPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 15));
         searchPanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
         
@@ -95,79 +95,79 @@ public class FoodMenu extends javax.swing.JFrame {
         searchField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         searchField.setPreferredSize(new Dimension(600, 40));
         searchField.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(redTheme, 2),
+            BorderFactory.createLineBorder(temaVermelho, 2),
             BorderFactory.createEmptyBorder(8, 12, 8, 12)));
         searchField.setBackground(Color.WHITE);
         
-        JButton searchBtn = new JButton("Search");
+        JButton searchBtn = new JButton("Buscar");
         searchBtn.setName("btnSearch");
         searchBtn.setFont(new Font("Segoe UI", Font.PLAIN, 18));
         searchBtn.setPreferredSize(new Dimension(100, 40));
-        searchBtn.setBackground(redTheme);
+        searchBtn.setBackground(temaVermelho);
         searchBtn.setForeground(Color.WHITE);
         searchBtn.setBorderPainted(false);
         searchBtn.setFocusPainted(false);
-        searchBtn.addActionListener(e -> controller.searchFoods());
+        searchBtn.addActionListener(e -> controladorMenu.buscarAlimentos());
         
         searchPanel.add(searchField);
         searchPanel.add(searchBtn);
         
         // Food Cards Panel (Scrollable)
-        foodCardsPanel = new JPanel();
-        foodCardsPanel.setLayout(new BoxLayout(foodCardsPanel, BoxLayout.Y_AXIS));
-        foodCardsPanel.setBackground(lightRed);
-        foodCardsPanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
+        painelCartoesAlimentos = new JPanel();
+        painelCartoesAlimentos.setLayout(new BoxLayout(painelCartoesAlimentos, BoxLayout.Y_AXIS));
+        painelCartoesAlimentos.setBackground(vermelhoClaro);
+        painelCartoesAlimentos.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
         
-        scrollPane = new JScrollPane(foodCardsPanel);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder());
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-        scrollPane.setBackground(lightRed);
+        painelRolagem = new JScrollPane(painelCartoesAlimentos);
+        painelRolagem.setBorder(BorderFactory.createEmptyBorder());
+        painelRolagem.getVerticalScrollBar().setUnitIncrement(16);
+        painelRolagem.setBackground(vermelhoClaro);
         
         // Action Buttons Panel
         JPanel actionPanel = new JPanel();
-        actionPanel.setBackground(lightRed);
+        actionPanel.setBackground(vermelhoClaro);
         actionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         actionPanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 15, 15));
         
-        JButton addBtn = new JButton("Add to Cart");
+        JButton addBtn = new JButton("Adicionar ao Carrinho");
         addBtn.setName("btnAddToCart");
         addBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         addBtn.setPreferredSize(new Dimension(270, 45));
-        addBtn.setBackground(redTheme);
+        addBtn.setBackground(temaVermelho);
         addBtn.setForeground(Color.WHITE);
         addBtn.setBorderPainted(false);
         addBtn.setFocusPainted(false);
-        addBtn.addActionListener(e -> controller.addToCart());
+        addBtn.addActionListener(e -> controladorMenu.adicionarAoCarrinho());
         
-        JButton detailsBtn = new JButton("Details");
+        JButton detailsBtn = new JButton("Detalhes");
         detailsBtn.setName("btnViewDetails");
         detailsBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         detailsBtn.setPreferredSize(new Dimension(270, 45));
-        detailsBtn.setBackground(darkRed);
+        detailsBtn.setBackground(vermelhoEscuro);
         detailsBtn.setForeground(Color.WHITE);
         detailsBtn.setBorderPainted(false);
         detailsBtn.setFocusPainted(false);
-        detailsBtn.addActionListener(e -> controller.viewDetails());
+        detailsBtn.addActionListener(e -> controladorMenu.abrirDetalhes());
         
-        JButton cartBtn = new JButton("View Cart");
+        JButton cartBtn = new JButton("Ver Carrinho");
         cartBtn.setName("btnViewCart");
         cartBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         cartBtn.setPreferredSize(new Dimension(270, 45));
-        cartBtn.setBackground(redTheme);
+        cartBtn.setBackground(temaVermelho);
         cartBtn.setForeground(Color.WHITE);
         cartBtn.setBorderPainted(false);
         cartBtn.setFocusPainted(false);
-        cartBtn.addActionListener(e -> controller.viewCart());
+        cartBtn.addActionListener(e -> controladorMenu.abrirCarrinho());
         
-        JButton ordersBtn = new JButton("See My Orders");
+        JButton ordersBtn = new JButton("Meus Pedidos");
         ordersBtn.setName("btnSeeMyOrders");
         ordersBtn.setFont(new Font("Segoe UI", Font.BOLD, 16));
         ordersBtn.setPreferredSize(new Dimension(270, 45));
-        ordersBtn.setBackground(darkRed);
+        ordersBtn.setBackground(vermelhoEscuro);
         ordersBtn.setForeground(Color.WHITE);
         ordersBtn.setBorderPainted(false);
         ordersBtn.setFocusPainted(false);
-        ordersBtn.addActionListener(e -> controller.seeMyOrders());
+        ordersBtn.addActionListener(e -> controladorMenu.verMeusPedidos());
 
         actionPanel.add(addBtn);
         actionPanel.add(detailsBtn);
@@ -176,9 +176,9 @@ public class FoodMenu extends javax.swing.JFrame {
         
         // Main content panel (search + scroll)
         JPanel contentPanel = new JPanel(new BorderLayout());
-        contentPanel.setBackground(lightRed);
+        contentPanel.setBackground(vermelhoClaro);
         contentPanel.add(searchPanel, BorderLayout.NORTH);
-        contentPanel.add(scrollPane, BorderLayout.CENTER);
+        contentPanel.add(painelRolagem, BorderLayout.CENTER);
         
         // Add components to main frame
         getContentPane().add(headerPanel, BorderLayout.NORTH);
@@ -188,26 +188,26 @@ public class FoodMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
-    public void displayFoods(List<Food> foods) {
-        foodCardsPanel.removeAll();
-        selectedFood = null;
+    public void exibirAlimentos(List<Food> alimentos) {
+        painelCartoesAlimentos.removeAll();
+        alimentoSelecionado = null;
         
-        for (Food food : foods) {
-            JPanel card = createFoodCard(food);
-            foodCardsPanel.add(card);
-            foodCardsPanel.add(Box.createVerticalStrut(15));
+        for (Food alimento : alimentos) {
+            JPanel card = criarCartaoAlimento(alimento);
+            painelCartoesAlimentos.add(card);
+            painelCartoesAlimentos.add(Box.createVerticalStrut(15));
         }
         
-        foodCardsPanel.revalidate();
-        foodCardsPanel.repaint();
+        painelCartoesAlimentos.revalidate();
+        painelCartoesAlimentos.repaint();
     }
     
-    private JPanel createFoodCard(Food food) {
+    private JPanel criarCartaoAlimento(Food alimento) {
         JPanel card = new JPanel();
         card.setLayout(new BorderLayout(15, 0));
         card.setBackground(Color.WHITE);
         card.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(redTheme, 2),
+            BorderFactory.createLineBorder(temaVermelho, 2),
             BorderFactory.createEmptyBorder(12, 12, 12, 12)));
         card.setPreferredSize(new Dimension(850, 160));
         card.setMaximumSize(new Dimension(850, 160));
@@ -216,8 +216,8 @@ public class FoodMenu extends javax.swing.JFrame {
         card.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                selectCard(card);
-                selectedFood = food;
+                selecionarCartao(card);
+                alimentoSelecionado = food;
             }
             
             @Override
@@ -227,7 +227,7 @@ public class FoodMenu extends javax.swing.JFrame {
             
             @Override
             public void mouseExited(MouseEvent e) {
-                if (selectedFood != food) {
+                if (alimentoSelecionado != food) {
                     card.setBackground(Color.WHITE);
                 }
             }
@@ -242,20 +242,20 @@ public class FoodMenu extends javax.swing.JFrame {
                 g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
                 
                 ImageIcon icon = null;
-                if (food.getImagePath() != null && !food.getImagePath().isEmpty()) {
-                    File imgFile = new File(food.getImagePath());
+                if (alimento.getImagePath() != null && !alimento.getImagePath().isEmpty()) {
+                    File imgFile = new File(alimento.getImagePath());
                     if (imgFile.exists()) {
-                        icon = new ImageIcon(food.getImagePath());
+                        icon = new ImageIcon(alimento.getImagePath());
                     }
                 }
                 
                 if (icon == null) {
                     // Default placeholder - red gradient
-                    g2d.setColor(redTheme);
+                    g2d.setColor(temaVermelho);
                     g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10);
                     g2d.setColor(Color.WHITE);
                     g2d.setFont(new Font("Segoe UI", Font.BOLD, 24));
-                    String placeholder = "No Image";
+                    String placeholder = "Sem Imagem";
                     int placeholderWidth = g2d.getFontMetrics().stringWidth(placeholder);
                     g2d.drawString(placeholder, (getWidth() - placeholderWidth) / 2, getHeight() / 2 + 8);
                 } else {
@@ -266,7 +266,7 @@ public class FoodMenu extends javax.swing.JFrame {
             }
         };
         imagePanel.setPreferredSize(new Dimension(130, 130));
-        imagePanel.setBackground(redTheme);
+        imagePanel.setBackground(temaVermelho);
         
         // Info Panel
         JPanel infoPanel = new JPanel();
@@ -274,20 +274,20 @@ public class FoodMenu extends javax.swing.JFrame {
         infoPanel.setBackground(Color.WHITE);
         infoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         
-        JLabel nameLabel = new JLabel(food.getName());
+        JLabel nameLabel = new JLabel(alimento.getName());
         nameLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        nameLabel.setForeground(redTheme);
+        nameLabel.setForeground(temaVermelho);
         
         JLabel descLabel = new JLabel("<html><body style='width: 600px'>" + 
-            (food.getDescription().length() > 100 ? 
-                food.getDescription().substring(0, 100) + "..." : 
-                food.getDescription()) + "</body></html>");
+            (alimento.getDescription().length() > 100 ? 
+                alimento.getDescription().substring(0, 100) + "..." : 
+                alimento.getDescription()) + "</body></html>");
         descLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         descLabel.setForeground(new Color(80, 80, 80));
         
-        JLabel priceLabel = new JLabel("R$ " + String.format("%.2f", food.getPrice()));
+        JLabel priceLabel = new JLabel("R$ " + String.format("%.2f", alimento.getPrice()));
         priceLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        priceLabel.setForeground(redTheme);
+        priceLabel.setForeground(temaVermelho);
         
         infoPanel.add(nameLabel);
         infoPanel.add(Box.createVerticalStrut(5));
@@ -302,9 +302,9 @@ public class FoodMenu extends javax.swing.JFrame {
         return card;
     }
     
-    private void selectCard(JPanel card) {
+    private void selecionarCartao(JPanel card) {
         // Reset all cards
-        for (java.awt.Component comp : foodCardsPanel.getComponents()) {
+        for (java.awt.Component comp : painelCartoesAlimentos.getComponents()) {
             if (comp instanceof JPanel) {
                 comp.setBackground(Color.WHITE);
             }
@@ -313,8 +313,8 @@ public class FoodMenu extends javax.swing.JFrame {
         card.setBackground(new Color(255, 230, 230));
     }
     
-    public Food getSelectedFood() {
-        return selectedFood;
+    public Food obterAlimentoSelecionado() {
+        return alimentoSelecionado;
     }
     
     public JTextField getTxtSearch() {
@@ -358,14 +358,14 @@ public class FoodMenu extends javax.swing.JFrame {
         return null;
     }
 
-    public void updateCartCount(int count) {
+    public void atualizarContadorCarrinho(int quantidade) {
         JLabel cartLabel = (JLabel) findComponentByName("cartCount");
         if (cartLabel != null) {
-            cartLabel.setText("Cart: " + count);
+            cartLabel.setText("Carrinho: " + quantidade);
         }
     }
     
-    // Legacy methods for compatibility
+    // MÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©todos legados para compatibilidade
     public javax.swing.JList<Food> getFoodList() {
         return null; // Not used anymore
     }

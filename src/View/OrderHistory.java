@@ -6,24 +6,24 @@ import javax.swing.table.DefaultTableModel;
 
 public class OrderHistory extends javax.swing.JFrame {
 
-    private DefaultTableModel tableModel;
+    private DefaultTableModel modeloTabela;
 
     public OrderHistory() {
         initComponents();
-        tableModel = new DefaultTableModel(new Object[]{"Order ID", "Date", "Total"}, 0);
-        orderTable.setModel(tableModel);
+        modeloTabela = new DefaultTableModel(new Object[]{"Pedido", "Data", "Total"}, 0);
+        tabelaPedidos.setModel(modeloTabela);
     }
 
     public JTable getOrderTable() {
-        return orderTable;
+        return tabelaPedidos;
     }
 
     public DefaultTableModel getTableModel() {
-        return tableModel;
+        return modeloTabela;
     }
 
-    public JButton getBtnClose() {
-        return btnClose;
+    public JButton getBtnFechar() {
+        return btnFechar;
     }
 
     @SuppressWarnings("unchecked")
@@ -31,30 +31,30 @@ public class OrderHistory extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        orderTable = new javax.swing.JTable();
+        tabelaPedidos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        btnClose = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("My Orders");
+        setTitle("Meus Pedidos");
 
-        orderTable.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Order ID", "Date", "Total"
+                "Pedido", "Data", "Total"
             }
         ));
-        jScrollPane1.setViewportView(orderTable);
+        jScrollPane1.setViewportView(tabelaPedidos);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("My Orders");
+        jLabel1.setText("Meus Pedidos");
 
-        btnClose.setText("Close");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
+        btnFechar.setText("Fechar");
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
+                btnFecharActionPerformed(evt);
             }
         });
 
@@ -71,7 +71,7 @@ public class OrderHistory extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnClose)))
+                        .addComponent(btnFechar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -82,7 +82,7 @@ public class OrderHistory extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClose)
+                .addComponent(btnFechar)
                 .addContainerGap())
         );
 
@@ -90,14 +90,14 @@ public class OrderHistory extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {                                         
         this.dispose();
     }                                        
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnFechar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable orderTable;
+    private javax.swing.JTable tabelaPedidos;
     // End of variables declaration                   
 }

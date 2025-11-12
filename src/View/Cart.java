@@ -16,25 +16,25 @@ import javax.swing.JTextField;
  */
 public class Cart extends javax.swing.JFrame {
 
-    private CartController controller;
-    private DefaultListModel<CartItem> cartListModel;
+    private CartController controladorCarrinho;
+    private DefaultListModel<CartItem> modeloListaCarrinho;
     
     /**
      * Creates new form Cart
      */
     public Cart() {
         initComponents();
-        cartListModel = new DefaultListModel<>();
-        cartList.setModel(cartListModel);
-        controller = new CartController(this);
-        controller.loadCart();
+        modeloListaCarrinho = new DefaultListModel<>();
+        cartList.setModel(modeloListaCarrinho);
+        controladorCarrinho = new CartController(this);
+        controladorCarrinho.carregarCarrinho();
         
         // Add listener to update spinner when item is selected
-        cartList.addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting()) {
-                CartItem selected = cartList.getSelectedValue();
-                if (selected != null) {
-                    spnQuantity.setValue(selected.getQuantity());
+        cartList.addListSelectionListener(evento -> {
+            if (!evento.getValueIsAdjusting()) {
+                CartItem itemSelecionado = cartList.getSelectedValue();
+                if (itemSelecionado != null) {
+                    spnQuantity.setValue(itemSelecionado.getQuantity());
                 }
             }
         });
@@ -45,7 +45,7 @@ public class Cart extends javax.swing.JFrame {
     }
 
     public DefaultListModel<CartItem> getCartListModel() {
-        return cartListModel;
+        return modeloListaCarrinho;
     }
 
     public JSpinner getSpnQuantity() {
@@ -97,7 +97,7 @@ public class Cart extends javax.swing.JFrame {
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(220, 20, 60));
-        lblTitle.setText("🛒 iFood - Carrinho");
+        lblTitle.setText("iFood - Carrinho");
 
         lblQuantity.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblQuantity.setText("Quantidade:");
@@ -108,7 +108,7 @@ public class Cart extends javax.swing.JFrame {
         btnEdit.setBackground(new java.awt.Color(220, 20, 60));
         btnEdit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEdit.setForeground(new java.awt.Color(255, 255, 255));
-        btnEdit.setText("✏️ Editar");
+        btnEdit.setText("Editar");
         btnEdit.setBorderPainted(false);
         btnEdit.setFocusPainted(false);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +120,7 @@ public class Cart extends javax.swing.JFrame {
         btnRemove.setBackground(new java.awt.Color(180, 0, 40));
         btnRemove.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRemove.setForeground(new java.awt.Color(255, 255, 255));
-        btnRemove.setText("🗑️ Remover");
+        btnRemove.setText("Remover");
         btnRemove.setBorderPainted(false);
         btnRemove.setFocusPainted(false);
         btnRemove.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +132,7 @@ public class Cart extends javax.swing.JFrame {
         btnBack.setBackground(new java.awt.Color(220, 20, 60));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
-        btnBack.setText("← Voltar");
+        btnBack.setText("Voltar");
         btnBack.setBorderPainted(false);
         btnBack.setFocusPainted(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +155,12 @@ public class Cart extends javax.swing.JFrame {
         txtTotal.setText("R$ 0,00");
 
         btnFinalize = new javax.swing.JButton();
-        btnFinalize.setText("Finalize Purchase");
+        btnFinalize.setBackground(new java.awt.Color(220, 20, 60));
+        btnFinalize.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnFinalize.setForeground(new java.awt.Color(255, 255, 255));
+        btnFinalize.setText("Finalizar Compra");
+        btnFinalize.setBorderPainted(false);
+        btnFinalize.setFocusPainted(false);
         btnFinalize.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizeActionPerformed(evt);
@@ -219,20 +224,25 @@ public class Cart extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        controller.editQuantity();
+        controladorCarrinho.editarQuantidade();
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        controller.removeItem();
+        controladorCarrinho.removerItem();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        controller.backToMenu();
+        controladorCarrinho.voltarAoMenu();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnFinalizeActionPerformed(java.awt.event.ActionEvent evt) {
+        controladorCarrinho.finalizarCompra();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnFinalize;
     private javax.swing.JButton btnRemove;
     private javax.swing.JList<CartItem> cartList;
     private javax.swing.JScrollPane jScrollPane1;
@@ -243,4 +253,5 @@ public class Cart extends javax.swing.JFrame {
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
+
 

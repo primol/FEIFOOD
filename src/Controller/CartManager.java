@@ -1,5 +1,5 @@
 /*
- * Cart Manager - Singleton to manage cart state
+ * Cart Manager - Singleton responsÃƒÂ¡vel pelo estado do carrinho
  */
 package Controller;
 
@@ -9,15 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author unifvipereira
+ * Classe utilitÃ¡ria para armazenar os itens do carrinho durante a sessÃ£o atual.
  */
 public class CartManager {
     private static CartManager instance;
-    private List<CartItem> cartItems;
+    private List<CartItem> itensCarrinho;
     
     private CartManager() {
-        cartItems = new ArrayList<>();
+        itensCarrinho = new ArrayList<>();
     }
     
     public static CartManager getInstance() {
@@ -27,53 +26,55 @@ public class CartManager {
         return instance;
     }
     
-    public void addToCart(Food food, int quantity) {
-        // Check if food already exists in cart
-        for (CartItem item : cartItems) {
-            if (item.getFood().getId() == food.getId()) {
-                item.setQuantity(item.getQuantity() + quantity);
+    public void adicionarAoCarrinho(Food alimento, int quantidade) {
+        for (CartItem item : itensCarrinho) {
+            if (item.getFood().getId() == alimento.getId()) {
+                item.setQuantity(item.getQuantity() + quantidade);
                 return;
             }
         }
-        // If not found, add new item
-        cartItems.add(new CartItem(food, quantity));
+        itensCarrinho.add(new CartItem(alimento, quantidade));
     }
     
-    public void updateQuantity(int foodId, int quantity) {
-        for (CartItem item : cartItems) {
-            if (item.getFood().getId() == foodId) {
-                item.setQuantity(quantity);
+    public void atualizarQuantidade(int alimentoId, int quantidade) {
+        for (CartItem item : itensCarrinho) {
+            if (item.getFood().getId() == alimentoId) {
+                item.setQuantity(quantidade);
                 return;
             }
         }
     }
     
-    public void removeFromCart(int foodId) {
-        cartItems.removeIf(item -> item.getFood().getId() == foodId);
+    public void removerDoCarrinho(int alimentoId) {
+        itensCarrinho.removeIf(item -> item.getFood().getId() == alimentoId);
     }
     
-    public List<CartItem> getCartItems() {
-        return new ArrayList<>(cartItems);
+    public List<CartItem> obterItensCarrinho() {
+        return new ArrayList<>(itensCarrinho);
     }
     
-    public double getTotal() {
+    public double calcularTotal() {
         double total = 0;
-        for (CartItem item : cartItems) {
+        for (CartItem item : itensCarrinho) {
             total += item.getTotalPrice();
         }
         return total;
     }
     
-    public int getItemCount() {
-        int count = 0;
-        for (CartItem item : cartItems) {
-            count += item.getQuantity();
+    public int obterQuantidadeItens() {
+        int quantidadeTotal = 0;
+        for (CartItem item : itensCarrinho) {
+            quantidadeTotal += item.getQuantity();
         }
-        return count;
+        return quantidadeTotal;
     }
     
-    public void clearCart() {
-        cartItems.clear();
+    public void limparCarrinho() {
+        itensCarrinho.clear();
     }
 }
+
+
+
+
 
