@@ -7,6 +7,7 @@ import DAO.FoodDAO;
 import Model.Aluno;
 import Model.Food;
 import View.Cart;
+import View.CartScreen;
 import View.FoodDetails;
 import View.FoodMenu;
 import View.OrderHistory;
@@ -90,7 +91,7 @@ public class FoodMenuController {
     }
     
     public void viewCart() {
-        Cart cartWindow = new Cart();
+        CartScreen cartWindow = new CartScreen();
         cartWindow.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosed(java.awt.event.WindowEvent windowEvent) {
