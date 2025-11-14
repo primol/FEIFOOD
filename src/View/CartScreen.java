@@ -43,6 +43,7 @@ public class CartScreen extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnFinalize = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -67,6 +68,13 @@ public class CartScreen extends javax.swing.JFrame {
             }
         });
 
+        btnClear.setText("Limpar Carrinho");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,6 +87,8 @@ public class CartScreen extends javax.swing.JFrame {
                         .addComponent(lblTotal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFinalize)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnClear)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnClose))
                     .addGroup(layout.createSequentialGroup()
@@ -97,7 +107,8 @@ public class CartScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotal)
                     .addComponent(btnClose)
-                    .addComponent(btnFinalize))
+                    .addComponent(btnFinalize)
+                    .addComponent(btnClear))
                 .addContainerGap())
         );
 
@@ -119,6 +130,12 @@ public class CartScreen extends javax.swing.JFrame {
         this.dispose();
     }                                           
 
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        CartManager.getInstance().clearCart();
+        loadCart();
+        JOptionPane.showMessageDialog(this, "Carrinho esvaziado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+    }                                        
+
     private void loadCart() {
         List<CartItem> items = CartManager.getInstance().getCartItems();
         DefaultListModel<String> model = new DefaultListModel<>();
@@ -135,6 +152,7 @@ public class CartScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnFinalize;
     private javax.swing.JLabel jLabel1;

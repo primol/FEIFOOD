@@ -86,19 +86,23 @@ public class FoodMenuController {
             return;
         }
         
-        FoodDetails detailsWindow = new FoodDetails(selected);
-        detailsWindow.setVisible(true);
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            FoodDetails detailsWindow = new FoodDetails(selected);
+            detailsWindow.setVisible(true);
+        });
     }
     
     public void viewCart() {
-        CartScreen cartWindow = new CartScreen();
-        cartWindow.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                updateCartCount();
-            }
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            CartScreen cartWindow = new CartScreen();
+            cartWindow.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                    updateCartCount();
+                }
+            });
+            cartWindow.setVisible(true);
         });
-        cartWindow.setVisible(true);
     }
 
     public void seeMyOrders() {
@@ -107,9 +111,11 @@ public class FoodMenuController {
             JOptionPane.showMessageDialog(view, "Você precisa estar logado para ver seus pedidos!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        OrderHistory orderHistory = new OrderHistory();
-        new OrderHistoryController(orderHistory, aluno.getId());
-        orderHistory.setVisible(true);
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            OrderHistory orderHistory = new OrderHistory();
+            new OrderHistoryController(orderHistory, aluno.getId());
+            orderHistory.setVisible(true);
+        });
     }
     
     public void updateCartCount() {
