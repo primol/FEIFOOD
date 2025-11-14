@@ -1,59 +1,55 @@
-FEIFOOD
-Descrição
+🍽️ FEIFOOD — Gerenciamento de Alimentos
 
-O FEIFOOD é um projeto voltado para o gerenciamento e controle de alimentos, desenvolvido com foco em organização e praticidade.
-A ideia principal é permitir o cadastro, listagem e manutenção de informações relacionadas a comidas, pratos ou ingredientes.
+O FEIFOOD é um sistema desenvolvido para facilitar o controle, organização e manutenção de informações sobre alimentos — seja comida pronta, ingredientes ou pratos.
+O foco é simplicidade, agilidade e fácil manutenção.
 
-O sistema foi estruturado em Java, utilizando o NetBeans como ambiente de desenvolvimento e o Apache Ant para build.
+Construído em Java, utilizando NetBeans e Apache Ant, o projeto segue uma estrutura modular para garantir melhor organização e escalabilidade.
 
-Funcionalidades
+🚀 Funcionalidades
 
-Cadastro de itens de comida
+✅ Cadastro de alimentos
 
-Edição e remoção de registros
+✏️ Edição de itens já cadastrados
 
-Listagem e busca de alimentos
+🗑️ Remoção de registros
 
-Estrutura modular, com separação entre código-fonte e bibliotecas
+📋 Listagem completa dos alimentos
 
-Geração de build e distribuição automatizada via build.xml
+🔍 Busca por nome
 
-Estrutura do Projeto
+🧩 Estrutura modular dividida entre código, libs e configs
+
+⚙️ Build automatizado via build.xml
+
+🗂️ Estrutura do Projeto
 FEIFOOD/
-├─ build/         # Arquivos temporários de compilação
-├─ dist/          # Saída final do projeto (build)
-├─ lib/           # Bibliotecas externas
-├─ nbproject/     # Configurações do NetBeans
-├─ src/           # Código-fonte principal
-├─ build.xml      # Script de build (Ant)
-└─ manifest.mf    # Metadados da aplicação
+├─ build/          # Arquivos temporários de compilação
+├─ dist/           # Arquivos finais gerados (build)
+├─ lib/            # Bibliotecas externas
+├─ nbproject/      # Configurações do NetBeans
+├─ src/            # Código-fonte principal
+├─ build.xml       # Script de build do Ant
+└─ manifest.mf     # Metadados da aplicação
 
-Como Executar
-
-Clone o repositório:
-
+▶️ Como Executar
+1️⃣ Clonar o repositório
 git clone https://github.com/primol/FEIFOOD.git
 cd FEIFOOD
 
-
-Compile o projeto com o Ant (ou via NetBeans):
-
+2️⃣ Compilar o projeto com Ant (ou pelo NetBeans)
 ant clean
 ant build
 
+3️⃣ Executar o programa
 
-Execute o projeto:
-
-O arquivo final pode ser encontrado dentro da pasta dist/
-
-Execute com:
+O .jar gerado fica na pasta dist/.
 
 java -jar dist/FEIFOOD.jar
 
-Requisitos
+📌 Requisitos
 
-Java JDK 8+
+☕ Java JDK 8+
 
-Apache Ant (se executar via linha de comando)
+🛠️ Apache Ant (caso compile via terminal)
 
-NetBeans (opcional, para desenvolvimento)
+🧪 NetBeans (opcional, mas recomendado para desenvolvimento)
