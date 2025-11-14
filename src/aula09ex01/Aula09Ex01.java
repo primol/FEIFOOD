@@ -1,5 +1,5 @@
 /*
- * iFood Delivery App - Main Class
+ * 
  */
 package aula09ex01;
 
@@ -9,7 +9,7 @@ import View.FoodMenu;
 
 /**
  *
- * @author unifvipereiraaaaaaaaaaaa
+ * @author unifvipereira
  */
 public class Aula09Ex01 {
 
@@ -18,7 +18,7 @@ public class Aula09Ex01 {
      */
     public static void main(String[] args) {
             initDatabase();
-            // Open Login screen
+            // abrir a tela inicial
             Login login = new Login();
             login.setVisible(true);
     }

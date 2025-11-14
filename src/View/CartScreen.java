@@ -40,6 +40,8 @@ public class CartScreen extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstCart = new javax.swing.JList<>();
         lblTotal = new javax.swing.JLabel();
+        lblSubtotal = new javax.swing.JLabel();
+        lblTax = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnFinalize = new javax.swing.JButton();
@@ -50,6 +52,8 @@ public class CartScreen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lstCart);
 
         lblTotal.setText("Total: R$ 0,00");
+        lblSubtotal.setText("Subtotal: R$ 0,00");
+        lblTax.setText("Taxa (5%): R$ 0,00");
 
         btnClose.setText("Fechar");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +88,10 @@ public class CartScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTotal)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTotal)
+                            .addComponent(lblSubtotal)
+                            .addComponent(lblTax))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFinalize)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -104,6 +111,10 @@ public class CartScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSubtotal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTax)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotal)
                     .addComponent(btnClose)
@@ -147,7 +158,15 @@ public class CartScreen extends javax.swing.JFrame {
     }
 
     private void updateTotal() {
-        double total = CartManager.getInstance().getTotal();
+        double subtotal = 0;
+        for (CartItem item : CartManager.getInstance().getCartItems()) {
+            subtotal += item.getTotalPrice();
+        }
+        double tax = CartManager.getInstance().getTax();
+        double total = subtotal + tax;
+        
+        lblSubtotal.setText("Subtotal: R$ " + String.format("%.2f", subtotal));
+        lblTax.setText("Taxa (5%): R$ " + String.format("%.2f", tax));
         lblTotal.setText("Total: R$ " + String.format("%.2f", total));
     }
 
@@ -158,6 +177,8 @@ public class CartScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTotal;
+    private javax.swing.JLabel lblSubtotal;
+    private javax.swing.JLabel lblTax;
     private javax.swing.JList<String> lstCart;
     // End of variables declaration                   
 }

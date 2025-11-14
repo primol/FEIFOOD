@@ -15,10 +15,10 @@ import java.sql.SQLException;
 public class Conexao {
     public Connection getConnection() throws SQLException{
         try {
-            // Load PostgreSQL driver explicitly
+            // forca carregar
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            throw new SQLException("Driver PostgreSQL não encontrado! Adicione postgresql-42.7.8.jar ao classpath.", e);
+            throw new SQLException("ve se os numeros estao certo no conexao e se o postgresql esta instalado.", e);
         }
         
         Connection conexao = DriverManager.getConnection(

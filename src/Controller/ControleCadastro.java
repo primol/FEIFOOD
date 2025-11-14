@@ -1,5 +1,5 @@
 /*
- * Sign Up Controller
+ * tela de cadastro basico
  */
 package Controller;
 
@@ -23,7 +23,7 @@ public class ControleCadastro {
         this.view = view;
     }
     
-    public void cadastrarAluno() {
+    public void cadastrarAluno() {//igual da aula aqui
         String nome = view.getTxtNome().getText().trim();
         String usuario = view.getTxtUsuario().getText().trim();
         String senha = new String(view.getTxtSenha().getPassword()).trim();
@@ -44,7 +44,7 @@ public class ControleCadastro {
             AlunoDAO dao = new AlunoDAO(conn);
             boolean sucesso = dao.inserir(aluno);
             
-            if (sucesso) {
+            if (sucesso) { ////////////////// aqui tem varias execoes que eu nem imaginei mas IA ajudou
                 JOptionPane.showMessageDialog(view, 
                         "Cadastro realizado com sucesso!",
                         "Sucesso",
@@ -61,12 +61,7 @@ public class ControleCadastro {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(view, 
                     "Erro de conexão com o banco de dados.\n\n" +
-                    "Verifique:\n" +
-                    "• PostgreSQL está rodando?\n" +
-                    "• Database 'alunos' existe?\n" +
-                    "• Usuário: postgres\n" +
-                    "• Senha: aluno\n" +
-                    "• Porta: 5432\n\n" +
+
                     "Erro: " + e.getMessage(),
                     "Erro de Conexão",
                     JOptionPane.ERROR_MESSAGE);

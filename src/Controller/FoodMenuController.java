@@ -30,9 +30,9 @@ public class FoodMenuController {
     }
     
     public void loadFoods() {
-        List<Food> foods = foodDAO.searchFoods(""); // Search with empty term to get all from DB
+        List<Food> foods = foodDAO.searchFoods(""); //ve comida do banco de dados
         if (foods.isEmpty()) {
-            // Fallback to in-memory list if DB is empty or connection failed
+            // se der pau o banco pega da memoria
             foods = foodDAO.getAllFoods();
         }
         view.displayFoods(foods);

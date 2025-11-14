@@ -1,5 +1,5 @@
 /*
- * Cart Controller
+ *aqui vai ser a telinha que limpa e fecha pedido
  */
 package Controller;
 
@@ -82,7 +82,7 @@ public class CartController {
         Aluno aluno = UserSession.getInstance().getLoggedInAluno();
         if (aluno == null) {
             JOptionPane.showMessageDialog(view, "Você precisa estar logado para finalizar a compra!", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
+            return; //mt avancado isso
         }
 
         List<CartItem> cartItems = cartManager.getCartItems();

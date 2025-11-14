@@ -31,17 +31,17 @@ public class AlunoDAO {
     }
     
     public boolean inserir(Aluno aluno) throws SQLException {
-        // Check if user already exists
+        // STACK
         String checkSql = "select * from tbaluno where usuario = ?";
         PreparedStatement checkStmt = conexao.prepareStatement(checkSql);
         checkStmt.setString(1, aluno.getUsuario());
         ResultSet rs = checkStmt.executeQuery();
         
         if (rs.next()) {
-            return false; // User already exists
+            return false; //VE se tem
         }
         
-        // Insert new user
+        // joga nivo usuario
         String sql = "insert into tbaluno (nome, usuario, senha) values (?, ?, ?)";
         PreparedStatement statement = conexao.prepareStatement(sql);
         statement.setString(1, aluno.getNome());

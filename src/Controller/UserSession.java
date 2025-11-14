@@ -6,7 +6,7 @@ public class UserSession {
     private static UserSession instance;
     private Aluno loggedInAluno;
 
-    private UserSession() {
+    private UserSession() {//tem q ter isso 
     }
 
     public static UserSession getInstance() {

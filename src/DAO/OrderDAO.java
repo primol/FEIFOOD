@@ -22,7 +22,7 @@ public class OrderDAO {
         }
     }
 
-    public void createTables() {
+    public void createTables() {//BD
         String createOrdersTable = "CREATE TABLE IF NOT EXISTS orders ("
                 + "id SERIAL PRIMARY KEY,"
                 + "aluno_id INTEGER NOT NULL,"

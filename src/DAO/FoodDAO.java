@@ -22,17 +22,47 @@ public class FoodDAO {
         Conexao con = new Conexao();
         try {
             this.conexao = con.getConnection();
+            if (isTableEmpty()) {
+                populateInitialData();
+                insertFoodFromList();
+            }
         } catch (SQLException e) {
             System.err.println("Erro ao conectar: " + e.getMessage());
             // Fallback to in-memory if DB fails
         }
+    }
+
+    private boolean isTableEmpty() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM tbfood";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        rs.next();
+        return rs.getInt(1) == 0;
+    }
+
+    private void insertFoodFromList() throws SQLException {
+        String sql = "INSERT INTO tbfood (id, nome, descricao, preco, avaliacao, num_avaliacoes, categoria, imagem, is_alcoholic) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        for (Food food : foodList) {
+            stmt.setInt(1, food.getId());
+            stmt.setString(2, food.getName());
+            stmt.setString(3, food.getDescription());
+            stmt.setDouble(4, food.getPrice());
+            stmt.setDouble(5, food.getRating());
+            stmt.setInt(6, food.getRatingCount());
+            stmt.setString(7, food.getCategory());
+            stmt.setString(8, food.getImagePath());
+            stmt.setBoolean(9, food.isAlcoholic());
+            stmt.addBatch();
+        }
+        stmt.executeBatch();
     }
     
     // In-memory fallback (if database not available)
     private static List<Food> foodList = new ArrayList<>();
     private static int nextId = 1;
     
-    static {
+    private void populateInitialData() {
         // Sample foods
         foodList.add(new Food(nextId++, "Pizza Margherita", "Pizza clássica com molho de tomate, mussarela e manjericão", 35.90, 4.5, 20, "Pizza", "images/pizza.jpg"));
         foodList.add(new Food(nextId++, "Hambúrguer Artesanal", "Hambúrguer com carne artesanal, queijo, alface e tomate", 28.50, 4.8, 15, "Hambúrguer", "images/hamburguer.jpg"));
@@ -42,11 +72,20 @@ public class FoodDAO {
         foodList.add(new Food(nextId++, "Taco Mexicano", "Tacos com carne, queijo, alface e molho especial", 18.90, 4.4, 18, "Mexicano", "images/taco.jpg"));
         foodList.add(new Food(nextId++, "Frango Grelhado", "Peito de frango grelhado com arroz e batata", 26.50, 4.5, 22, "Brasileiro", "images/frango.jpg"));
         foodList.add(new Food(nextId++, "Ramen Tradicional", "Ramen com caldo de porco, ovos e noodles", 38.00, 4.9, 28, "Japonês", "images/ramen.jpg"));
+        Food heineken = new Food(nextId++, "Heineken", "Cerveja Heineken Long Neck 330ml", 8.00, 4.9, 100, "Bebida", "images/heineken.jpg");
+        heineken.setAlcoholic(true);
+        foodList.add(heineken);
     }
     
     public List<Food> getAllFoods() {
-        // Always return the in-memory list to ensure the UI is populated.
-        // For a production app, you would want to fetch from the database and handle empty states.
+        if (conexao != null) {
+            try {
+                return getAllFoodsFromDB();
+            } catch (SQLException e) {
+                System.err.println("Erro ao buscar alimentos: " + e.getMessage());
+            }
+        }
+        // Fallback to in-memory list
         return new ArrayList<>(foodList);
     }
     
@@ -73,6 +112,11 @@ public class FoodDAO {
                 rs.getString("categoria"),
                 imagePath
             );
+            try {
+                food.setAlcoholic(rs.getBoolean("is_alcoholic"));
+            } catch (SQLException e) {
+                // Column might not exist yet
+            }
             foods.add(food);
         }
         return foods;
@@ -127,6 +171,11 @@ public class FoodDAO {
                 rs.getString("categoria"),
                 imagePath
             );
+            try {
+                food.setAlcoholic(rs.getBoolean("is_alcoholic"));
+            } catch (SQLException e) {
+                // Column might not exist yet
+            }
             foods.add(food);
         }
         return foods;
@@ -162,7 +211,7 @@ public class FoodDAO {
             } catch (SQLException e) {
                 // Column might not exist yet
             }
-            return new Food(
+            Food food = new Food(
                 rs.getInt("id"),
                 rs.getString("nome"),
                 rs.getString("descricao"),
@@ -172,6 +221,12 @@ public class FoodDAO {
                 rs.getString("categoria"),
                 imagePath
             );
+            try {
+                food.setAlcoholic(rs.getBoolean("is_alcoholic"));
+            } catch (SQLException e) {
+                // Column might not exist yet
+            }
+            return food;
         }
         return null;
     }

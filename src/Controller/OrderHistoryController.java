@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-public class OrderHistoryController {
+public class OrderHistoryController { // funcionalidade em teste
 
     private final OrderHistory view;
     private final OrderDAO orderDAO;

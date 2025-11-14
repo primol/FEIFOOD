@@ -1,6 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * aqui vai ser o login  TELA IMPORTANTE
  */
 package Controller;
 import java.sql.Connection;
@@ -58,12 +57,7 @@ public class ControleLogin {
         }catch(SQLException e ){
             JOptionPane.showMessageDialog(tela1, 
                     "Erro de conexão com o banco de dados.\n\n" +
-                    "Verifique:\n" +
-                    "• PostgreSQL está rodando?\n" +
-                    "• Database 'alunos' existe?\n" +
-                    "• Usuário: postgres\n" +
-                    "• Senha: aluno\n" +
-                    "• Porta: 5432\n\n" +
+
                     "Erro: " + e.getMessage(),
                     "Erro de Conexão",
                     JOptionPane.ERROR_MESSAGE);

@@ -16,6 +16,7 @@ public class Food {
     private int ratingCount;
     private String category;
     private String imagePath;
+    private boolean isAlcoholic;
     
     public Food() {
     }
@@ -29,6 +30,7 @@ public class Food {
         this.ratingCount = ratingCount;
         this.category = category;
         this.imagePath = null;
+        this.isAlcoholic = false;
     }
     
     public Food(int id, String name, String description, double price, double rating, int ratingCount, String category, String imagePath) {
@@ -40,6 +42,7 @@ public class Food {
         this.ratingCount = ratingCount;
         this.category = category;
         this.imagePath = imagePath;
+        this.isAlcoholic = false;
     }
     
     public Food(String name, String description, double price, String category) {
@@ -49,6 +52,7 @@ public class Food {
         this.rating = 0.0;
         this.ratingCount = 0;
         this.category = category;
+        this.isAlcoholic = false;
     }
 
     public int getId() {
@@ -113,6 +117,14 @@ public class Food {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+    
+    public boolean isAlcoholic() {
+        return isAlcoholic;
+    }
+
+    public void setAlcoholic(boolean isAlcoholic) {
+        this.isAlcoholic = isAlcoholic;
     }
     
     public void addRating(int stars) {

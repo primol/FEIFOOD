@@ -1,5 +1,5 @@
 /*
- * Food Details Controller
+ * aqui vai ser o botao de detalhe la em baixo para ver comida e avaliacao
  */
 package Controller;
 
@@ -21,13 +21,13 @@ public class FoodDetailsController {
         this.foodDAO = new FoodDAO();
     }
     
-    public void loadFoodDetails(Food food) {
+    public void loadFoodDetails(Food food) { // carrega 
         view.getLblFoodName().setText(food.getName());
         view.getLblCategory().setText("Categoria: " + food.getCategory());
         view.getTxtDescription().setText(food.getDescription());
         view.getLblPrice().setText("Preço: R$ " + String.format("%.2f", food.getPrice()));
         
-        String ratingText = String.format("Avaliação: %.1f ⭐ (%d avaliações)", 
+        String ratingText = String.format("Avaliação: %.1f  (%d avaliações)", 
                 food.getRating(), food.getRatingCount());
         view.getLblRating().setText(ratingText);
     }
@@ -40,7 +40,7 @@ public class FoodDetailsController {
         
         foodDAO.rateFood(food.getId(), stars);
         
-        // Reload food to get updated rating
+        // MT AVANÇADO mas bem legal, smp ta ayualizando qnd em uma avaliacao
         Food updatedFood = foodDAO.getFoodById(food.getId());
         if (updatedFood != null) {
             loadFoodDetails(updatedFood);

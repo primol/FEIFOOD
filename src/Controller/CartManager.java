@@ -56,11 +56,22 @@ public class CartManager {
         return new ArrayList<>(cartItems);
     }
     
+    public double getTax() {
+        double tax = 0;
+        for (CartItem item : cartItems) {
+            if (item.getFood().isAlcoholic()) {
+                tax += item.getTotalPrice() * 0.05;
+            }
+        }
+        return tax;
+    }
+    
     public double getTotal() {
         double total = 0;
         for (CartItem item : cartItems) {
             total += item.getTotalPrice();
         }
+        total += getTax();
         return total;
     }
     
